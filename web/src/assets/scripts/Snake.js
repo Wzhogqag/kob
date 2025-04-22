@@ -16,7 +16,7 @@ export class Snake extends AcGameObject {
         this.direction = -1; // -1表示没有指令，0、1、2、3表示上右下左
         this.status = "idle"; // idle表示静止，move表示正在移动，die表示死亡
 
-        this.dr = [-1, 0, 1, 0]; // 四个方向行的偏移量   
+        this.dr = [-1, 0, 1, 0]; // 四个方向行的偏移量    
         this.dc = [0, 1, 0, -1]; // 四个方向列的偏移量 
   
         this.step = 0; // 表示回合数
