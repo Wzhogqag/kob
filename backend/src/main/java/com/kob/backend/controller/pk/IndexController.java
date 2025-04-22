@@ -12,16 +12,12 @@ import java.util.Map;
  * 作者： 程序员魏sir
  * 日期： 2025/4/15 16:21
  **/
-@RestController
-@RequestMapping("/pk/")
+@Controller
+@RequestMapping("/")
 public class IndexController {
 
-    @RequestMapping("getbotinfo/")
-    public Map<String,String> getbotinfo() {
-        Map<String,String>bot1 = new HashMap<>();
-        bot1.put("name","tiger");
-        bot1.put("rating","1500");
-
-        return bot1;
+    @RequestMapping("/")
+    public String index(){
+        return "pk/index.html";
     }
 }
