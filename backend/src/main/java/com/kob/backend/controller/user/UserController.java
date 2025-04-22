@@ -39,7 +39,7 @@ public class UserController {
     @GetMapping("/user/add/{userId}/{username}/{password}")
     public String addUser(@PathVariable int userId,@PathVariable String username,@PathVariable String password){
         if(password.length()<6){
-            return "密码太短";
+            return "密码太短"; 
         }
 
         PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
