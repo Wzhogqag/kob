@@ -19,6 +19,13 @@ export default{
         },
         updateToken(state,token){
             state.token = token;
+        },
+        logout(state){
+            state.id = "";
+            state.username = "";   
+            state.photo = "";
+            state.token = "";
+            state.is_login = false;
         }
     },
     actions: {
@@ -70,6 +77,11 @@ export default{
                 }
             });
         },
+        logout(context){
+            context.commit("logout");
+        }
+
+
 
 
     },
