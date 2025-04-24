@@ -46,6 +46,13 @@ public class RegisterServiceImpl implements RegisterService {
             map.put("error_message","用户名不能为空");
             return map;
         }
+<<<<<<< HEAD
+=======
+        if(password.length() == 0 || confirmedPassword.length() == 0){
+            map.put("error_message","密码不能为空");
+            return map;
+        }
+>>>>>>> 2b2e2c8 (--task=1028034,1028035 --user=杨冬梅 登录注册功能)
         if(username.length()>100){
             map.put("error_message","用户名长度不能大于100");
             return map;
@@ -54,10 +61,13 @@ public class RegisterServiceImpl implements RegisterService {
             map.put("error_message","密码长度不能大于100");
             return map;
         }
+<<<<<<< HEAD
         if(password.isEmpty() || confirmedPassword.isEmpty()){
             map.put("error_message","密码不能为空");
             return map;
         }
+=======
+>>>>>>> 2b2e2c8 (--task=1028034,1028035 --user=杨冬梅 登录注册功能)
         if(!password.equals(confirmedPassword)){
             map.put("error_message","两次输入的密码不一致");
             return map;
