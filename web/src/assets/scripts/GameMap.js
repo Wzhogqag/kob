@@ -67,7 +67,7 @@ export class GameMap extends AcGameObject{
         }
         return true;
     }
-
+ 
     next_step() { //让两条蛇进入下一回合
         for (const snake of this.snakes) {
             snake.next_step();
