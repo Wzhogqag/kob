@@ -1,5 +1,6 @@
 package com.kob.backend.consumer.utils;
 
+<<<<<<< HEAD
 import com.alibaba.fastjson.JSONObject;
 import com.kob.backend.consumer.WebSocketServer;
 import com.kob.backend.pojo.Record;
@@ -10,6 +11,11 @@ import java.util.Date;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.locks.ReentrantLock;
+=======
+import lombok.Getter;
+
+import java.util.Random;
+>>>>>>> 51cbfa7648e32ac2748f3ae606772988b5190673
 
 /**
  * 功能：
@@ -17,15 +23,24 @@ import java.util.concurrent.locks.ReentrantLock;
  * 日期： 2025/5/8 16:14
  **/
 
+<<<<<<< HEAD
 public class Game extends Thread {
     //用来管理游戏流程（地图生成）
     private final Integer rows;
     private final Integer cols;
     private final Integer inner_walls_count;
+=======
+public class Game {
+    //用来管理游戏流程（地图生成）
+    final private Integer rows;
+    final private Integer cols;
+    final private  Integer inner_walls_count;
+>>>>>>> 51cbfa7648e32ac2748f3ae606772988b5190673
 
     @Getter
     int [][] g;
     final private static int []dx = {-1,0,1,0},dy = {0,1,0,-1};
+<<<<<<< HEAD
     private final Player playerA, playerB;
     private Integer nextStepA = null;
     private Integer nextStepB = null;
@@ -34,10 +49,14 @@ public class Game extends Thread {
     private String loser = ""; // all:平局 A：A输， B：B输
 
     public Game(Integer rows,Integer cols,Integer inner_walls_count, Integer idA, Integer idB){
+=======
+    public Game(Integer rows,Integer cols,Integer inner_walls_count){
+>>>>>>> 51cbfa7648e32ac2748f3ae606772988b5190673
         this.rows = rows;
         this.cols = cols;
         this.inner_walls_count = inner_walls_count;
         this.g = new int[rows][cols];
+<<<<<<< HEAD
         playerA = new Player(idA, rows - 2, 1, new ArrayList<>());
         playerB = new Player(idB, 1, cols - 2, new ArrayList<>());
     }
@@ -66,6 +85,8 @@ public class Game extends Thread {
         } finally {
             lock.unlock();
         }
+=======
+>>>>>>> 51cbfa7648e32ac2748f3ae606772988b5190673
     }
 
     private boolean check_connectivity(int sx,int sy,int tx,int ty){
@@ -136,6 +157,7 @@ public class Game extends Thread {
         }
     }
 
+<<<<<<< HEAD
     private boolean nextStep() {
         try {
             Thread.sleep(200);
@@ -286,4 +308,7 @@ public class Game extends Thread {
             }
         }
     }
+=======
+
+>>>>>>> 51cbfa7648e32ac2748f3ae606772988b5190673
 }

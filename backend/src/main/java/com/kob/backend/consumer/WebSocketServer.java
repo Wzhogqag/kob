@@ -9,7 +9,10 @@ package com.kob.backend.consumer;
 import com.alibaba.fastjson.JSONObject;
 import com.kob.backend.consumer.utils.Game;
 import com.kob.backend.consumer.utils.JwtAuthentication;
+<<<<<<< HEAD
 import com.kob.backend.mapper.RecordMapper;
+=======
+>>>>>>> 51cbfa7648e32ac2748f3ae606772988b5190673
 import com.kob.backend.mapper.UserMapper;
 import com.kob.backend.pojo.User;
 import jakarta.websocket.OnClose;
@@ -22,7 +25,10 @@ import jakarta.websocket.*;
 import jakarta.websocket.server.PathParam;
 import jakarta.websocket.server.ServerEndpoint;
 
+<<<<<<< HEAD
 import javax.swing.plaf.PanelUI;
+=======
+>>>>>>> 51cbfa7648e32ac2748f3ae606772988b5190673
 import java.io.IOException;
 import java.util.Iterator;
 import java.util.concurrent.ConcurrentHashMap;
@@ -32,15 +38,23 @@ import java.util.concurrent.CopyOnWriteArraySet;
 @ServerEndpoint("/websocket/{token}")  // 注意不要以'/'结尾
 public class WebSocketServer {
 
+<<<<<<< HEAD
     final public static ConcurrentHashMap<Integer,WebSocketServer>users = new ConcurrentHashMap<>();
+=======
+    final private static ConcurrentHashMap<Integer,WebSocketServer>users = new ConcurrentHashMap<>();
+>>>>>>> 51cbfa7648e32ac2748f3ae606772988b5190673
 
     final private static CopyOnWriteArraySet<User> matchpool = new CopyOnWriteArraySet<>();
     private User user;
     private Session session = null;
 
     private static UserMapper userMapper;
+<<<<<<< HEAD
     public static RecordMapper recordMapper;
     private Game game = null;
+=======
+
+>>>>>>> 51cbfa7648e32ac2748f3ae606772988b5190673
 
 
 
@@ -49,9 +63,12 @@ public class WebSocketServer {
         WebSocketServer.userMapper = userMapper;
     }
 
+<<<<<<< HEAD
     @Autowired
     public void setRecordMapper(RecordMapper recordMapper){WebSocketServer.recordMapper = recordMapper;}
 
+=======
+>>>>>>> 51cbfa7648e32ac2748f3ae606772988b5190673
     @OnOpen
     public void onOpen(Session session, @PathParam("token") String token) throws IOException {
         // 建立连接
@@ -88,6 +105,7 @@ public class WebSocketServer {
             matchpool.remove(a);
             matchpool.remove(b);
 
+<<<<<<< HEAD
             Game game = new Game(13,14,20, a.getId(), b.getId());
             game.createMap();  // 生成地图
             users.get(a.getId()).game = game;
@@ -103,19 +121,32 @@ public class WebSocketServer {
             respGame.put("b_sx", game.getPlayerB().getSx());
             respGame.put("b_sy", game.getPlayerB().getSy());
             respGame.put("map", game.getG());
+=======
+            Game game = new Game(13,14,20);
+            game.createMap();  // 生成地图
+
+>>>>>>> 51cbfa7648e32ac2748f3ae606772988b5190673
 
             JSONObject respA = new JSONObject();
             respA.put("event","start-matching");
             respA.put("opponent_username",b.getUsername());
             respA.put("opponent_photo",b.getPhoto());
+<<<<<<< HEAD
             respA.put("game",respGame);
+=======
+            respA.put("gamemap",game.getG());
+>>>>>>> 51cbfa7648e32ac2748f3ae606772988b5190673
             users.get(a.getId()).sendMessage(respA.toJSONString());
 
             JSONObject respB = new JSONObject();
             respB.put("event","start-matching");
             respB.put("opponent_username",a.getUsername());
             respB.put("opponent_photo",a.getPhoto());
+<<<<<<< HEAD
             respB.put("game",respGame);
+=======
+            respB.put("gamemap",game.getG());
+>>>>>>> 51cbfa7648e32ac2748f3ae606772988b5190673
             users.get(b.getId()).sendMessage(respB.toJSONString());
         }
     }
@@ -124,6 +155,7 @@ public class WebSocketServer {
         matchpool.remove(this.user);
     }
 
+<<<<<<< HEAD
     private void move(int direction) {
         if (game.getPlayerA().getId().equals(user.getId())) {
             game.setNextStepA(direction);
@@ -132,6 +164,8 @@ public class WebSocketServer {
         }
     }
 
+=======
+>>>>>>> 51cbfa7648e32ac2748f3ae606772988b5190673
     @OnMessage
     public void onMessage(String message, Session session) {  // 当作路由
         // 从Client接收消息
@@ -140,8 +174,13 @@ public class WebSocketServer {
         String event = data.getString("event");
         if("start-matching".equals(event)){
             startMatching();
+<<<<<<< HEAD
         }else if("move".equals(event)){
             move(data.getInteger("direction"));
+=======
+        }else if("stop-matching".equals(event)){
+            stopMatching();
+>>>>>>> 51cbfa7648e32ac2748f3ae606772988b5190673
         }
     }
 
